@@ -7,6 +7,7 @@ import com.android.volley.VolleyError;
 
 import net.androidsensei.pokedex.PokedexApplication;
 import net.androidsensei.pokedex.model.Pokemon;
+import net.androidsensei.pokedex.model.PokemonList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,8 +21,8 @@ public class PokedexApi {
     static String POKEMONS_LIST = MI_POKEDEX_URL + "pokemons";
 
     public static void getPokemons(Response.Listener response, Response.ErrorListener error) {
-        GsonRequest<Pokemon[]> getPersons =
-                new GsonRequest<Pokemon[]>(POKEMONS_LIST, Pokemon[].class, response, error);
+        GsonRequest<PokemonList> getPersons =
+                new GsonRequest<PokemonList>(POKEMONS_LIST, PokemonList.class, response, error);
 
         PokedexApplication.getInstance().addToRequestQueue(getPersons);
 

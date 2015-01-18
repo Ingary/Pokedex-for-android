@@ -21,6 +21,7 @@ import net.androidsensei.pokedex.api.GsonRequest;
 import net.androidsensei.pokedex.api.PokedexApi;
 import net.androidsensei.pokedex.model.Pokemon;
 import net.androidsensei.pokedex.model.PokemonAdapter;
+import net.androidsensei.pokedex.model.PokemonList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -127,13 +128,13 @@ public class PokemonListFragment extends Fragment {
         listView.setVisibility(View.INVISIBLE);
         progressBarLoading.setVisibility(View.VISIBLE);
 
-        Response.Listener response = new Response.Listener<Pokemon[]>() {
+        Response.Listener response = new Response.Listener<PokemonList>() {
             @Override
-            public void onResponse(Pokemon[] response) {
-                List<Pokemon> pokemons = Arrays.asList(response);
+            public void onResponse(PokemonList response) {
+               PokemonList pokemons = response;
                 if(pokemons!=null){
                     pokemonAdapter.clear();
-                    pokemonAdapter.addAll(pokemons);
+                    pokemonAdapter.addAll(pokemons.getPokemons());
                 }
                 progressBarLoading.setVisibility(View.INVISIBLE);
                 listView.setVisibility(View.VISIBLE);
