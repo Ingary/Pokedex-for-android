@@ -22,19 +22,19 @@ public class PokedexDatabaseTest extends AndroidTestCase {
     public void testInsertReadDb() {
 
         int id = 1;
-        String nombre = "Charizar";
+        String name = "Charizard";
         String avatar = "http://img2.wikia.nocookie.net/__cb20140203022724/p__/protagonist/images/9/95/Charizard.png";
-        int numero = 5;
-        double altura = 1.75;
-        double peso = 220.25;
+        String uuid = "a3667158-612a-47cf-8592-43e62b6f54";
+        double height = 1.75;
+        double weight = 220.25;
 
         ContentValues values = new ContentValues();
         values.put(PokemonEntry._ID, id);
-        values.put(PokemonEntry.COLUMN_NOMBRE, nombre);
+        values.put(PokemonEntry.COLUMN_NAME, name);
         values.put(PokemonEntry.COLUMN_AVATAR, avatar);
-        values.put(PokemonEntry.COLUMN_NUMERO, numero);
-        values.put(PokemonEntry.COLUMN_ALTURA, altura);
-        values.put(PokemonEntry.COLUMN_PESO, peso);
+        values.put(PokemonEntry.COLUMN_UUID, uuid);
+        values.put(PokemonEntry.COLUMN_HEIGHT, height);
+        values.put(PokemonEntry.COLUMN_WEIGHT, weight);
 
         PokedexDbHelper dbHelper = new PokedexDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -46,11 +46,11 @@ public class PokedexDatabaseTest extends AndroidTestCase {
 
         String[] columns = {
                 PokemonEntry._ID,
-                PokemonEntry.COLUMN_NOMBRE,
+                PokemonEntry.COLUMN_NAME,
                 PokemonEntry.COLUMN_AVATAR,
-                PokemonEntry.COLUMN_NUMERO,
-                PokemonEntry.COLUMN_ALTURA,
-                PokemonEntry.COLUMN_PESO,
+                PokemonEntry.COLUMN_UUID,
+                PokemonEntry.COLUMN_HEIGHT,
+                PokemonEntry.COLUMN_WEIGHT,
         };
 
         Cursor cursor = db.query(
@@ -64,10 +64,10 @@ public class PokedexDatabaseTest extends AndroidTestCase {
         );
 
         if (cursor.moveToFirst()) {
-            int nombreIndex = cursor.getColumnIndex(PokemonEntry.COLUMN_NOMBRE);
-            String nombrePokemon = cursor.getString(nombreIndex);
+            int nameIndex = cursor.getColumnIndex(PokemonEntry.COLUMN_NAME);
+            String namePokemon = cursor.getString(nameIndex);
 
-            assertEquals(nombre, nombrePokemon);
+            assertEquals(name, namePokemon);
         }else {
             fail("Epic Fail :(");
         }

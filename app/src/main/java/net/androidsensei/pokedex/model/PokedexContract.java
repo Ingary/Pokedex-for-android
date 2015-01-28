@@ -11,27 +11,27 @@ public class PokedexContract implements BaseColumns {
 
         public static final String TABLE_NAME = "pokemons";
 
-        public static final String COLUMN_NOMBRE = "nombre";
+        public static final String COLUMN_UUID = "uuid";
+
+        public static final String COLUMN_NAME = "name";
 
         public static final String COLUMN_AVATAR = "avatar";
 
-        public static final String COLUMN_NUMERO = "numero";
+        public static final String COLUMN_HEIGHT = "height";
 
-        public static final String COLUMN_ALTURA = "altura";
-
-        public static final String COLUMN_PESO = "peso";
+        public static final String COLUMN_WEIGHT = "weight";
 
     }
 
-    public static final class LugarEntry implements BaseColumns {
+    public static final class LocationEntry implements BaseColumns {
 
-        public static final String TABLE_NAME = "lugares";
+        public static final String TABLE_NAME = "locations";
 
         public static final String COLUMN_POKEMON_ID = "pokemon_id";
 
-        public static final String COLUMN_LATITUD = "latitud";
+        public static final String COLUMN_LATITUDE = "latitude";
 
-        public static final String COLUMN_LONGITUD = "longitud";
+        public static final String COLUMN_LONGITUDE = "longitude";
 
     }
 
